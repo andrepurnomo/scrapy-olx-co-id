@@ -3,11 +3,15 @@
 Scraper dengan framework scapy untuk mengoleksi data dari olx, dibuat karena kegabutan yang hqq. Mungkin bisa berguna bagi yang ingin belajar atau data mining
 
 ### Fitur yang tersedia
+
 Berikut data yang dapat dikoleksi
+
+
+
 | Data | Nama Fitur | Url |
 | ------ | ------ | ------|
-| Mobil Bekas | otomotif_bekas | https://www.olx.co.id/mobil/bekas/
-| Motor Bekas | otomotif_bekas | https://www.olx.co.id/motor/bekas/
+| Mobil Bekas | otomotif_bekas | https://www.olx.co.id/mobil/bekas/ |
+| Motor Bekas | otomotif_bekas | https://www.olx.co.id/motor/bekas/ |
 
 ### Teknologi yang digunakan
 
