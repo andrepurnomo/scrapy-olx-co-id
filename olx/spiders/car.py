@@ -5,10 +5,10 @@ import pytz
 
 
 class OlxCar(scrapy.Spider):
-    name = "olx_car"
+    name = "otomotif_bekas"
 
-    url = raw_input("Masukkan Url : ")
-    page_total = raw_input("Jumlah Halaman : ")
+    url = raw_input("Masukkan Url (default mobil) : ")
+    page_total = raw_input("Jumlah Halaman (default 1): ")
 
     if not url:
         url = 'https://www.olx.co.id/mobil/bekas/'
