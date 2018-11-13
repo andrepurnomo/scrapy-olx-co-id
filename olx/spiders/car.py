@@ -7,12 +7,17 @@ import pytz
 class OlxCar(scrapy.Spider):
     name = "olx_car"
 
+    url = raw_input("Masukkan Url : ")
     page_total = raw_input("Jumlah Halaman : ")
+
+    if not url:
+        url = 'https://www.olx.co.id/mobil/bekas/'
+
     if not page_total:
         page_total = 1
 
-    start_urls = ['https://www.olx.co.id/mobil/bekas/semarang-kota/?page={}'.format(
-        x) for x in xrange(1, int(page_total) + 1)]
+    start_urls = ['{}?page={}'.format(url, x)
+                  for x in xrange(1, int(page_total) + 1)]
 
     def parse(self, response):
         # Follow links to car detail
@@ -68,11 +73,11 @@ class OlxCar(scrapy.Spider):
                 return datetime(now.year, month.index(value[2])+1, int(value[0]))
 
         yield dict({
-            'Name': extract_first('h1.brkword::text'),
-            'Owner': extract_first('div.userbox > p > a > span.brkword::text'),
-            'Price': to_float(extract_first('div.pricelabel > strong > span::text')),
-            'Phone': response.meta['phone'],
-            'Location': extract_first('span.icon.markerloc + span > strong > a::text'),
-            'Show': to_float(extract_first('#offerbottombar > .clr.rel + div.pdingtop10 > strong::text')),
-            'Date': convert_date(response.meta['date']),
+            'Nama': extract_first('h1.brkword::text'),
+            'Penjual': extract_first('div.userbox > p > a > span.brkword::text'),
+            'Harga': to_float(extract_first('div.pricelabel > strong > span::text')),
+            'Kontak': response.meta['phone'],
+            'Lokasi': extract_first('span.icon.markerloc + span > strong > a::text'),
+            'Dilihat': to_float(extract_first('#offerbottombar > .clr.rel + div.pdingtop10 > strong::text')),
+            'Tanggal': convert_date(response.meta['date']),
         }, **extract_specification())
